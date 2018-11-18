@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: dapiced
+  description: Ansible role that  Add firewalld service without INVALID_SERVICE error  
+  license: Free
+  min_ansible_version: any
+  platforms:
+  - name: EL
+    versions:
+    - all
+  galaxy_tags:
+    - firewalld
+    - INVALID_SERVICE
+

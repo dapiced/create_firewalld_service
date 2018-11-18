@@ -1,0 +1,23 @@
+- name: Create firewalld service
+  copy:
+    src: serviceXXX.xml
+    dest: /etc/firewalld/services/serviceXXX.xml
+    owner: root
+    group: root
+    mode: 0640
+  register: serviceXXX
+  
+- name: Need to restart firewalld to make service registed to firewalld
+  service:
+    name: firewalld
+    state: restarted
+  when: serviceXXX.changed
+  
+- name: Add service serviceXXX in the public zone
+  firewalld:
+    service: serviceXXX
+    zone: public
+    immediate: true
+    state: enabled
+    permanent: true
+  notify: reload firewalld  
